@@ -28,11 +28,19 @@ const Register = () => {
 
       navigate("/dashboard");
     } catch (error) {
-      alert(
-        error.response?.data?.message ||
-          "Registration Failed"
-      );
-    }
+  console.log("Full Error:", error);
+  console.log("Response:", error.response);
+
+  if (error.response) {
+    alert(
+      `Status: ${error.response.status}\nMessage: ${
+        error.response.data.message
+      }`
+    );
+  } else {
+    alert(error.message);
+  }
+}
   };
 
   return (
